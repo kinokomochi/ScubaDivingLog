@@ -10,14 +10,14 @@
 @section('content')
 <h2>マイページ</h2>
     名前→{{auth()->user()->name}}
-        プロフィール写真→{{auth()->user()->image}}
+        プロフィール写真→<img src="{{ $read_image ?? '' }}" width="300" height="300">
         性別→{{auth()->user()->gender}}
         居住地→{{auth()->user()->prefecture}}
         ライセンス→{{auth()->user()->licence}}
         経験本数→{{auth()->user()->experience}}
         自己紹介→{{auth()->user()->introduction}}
-<a href="">プロフィール画像を編集</a>
-<a href="">マイページを編集</a>
+<a href="{{ route('editImage', ['id' => auth()->user()->id]) }}">プロフィール画像を編集</a>
+<a href="{{ route('editProfile', ['id' => auth()->user()->id]) }}">マイページを編集</a>
 <a href="">日記を書く</a>
 <a href="">ログをつける</a>
 

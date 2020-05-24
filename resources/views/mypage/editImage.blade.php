@@ -8,10 +8,20 @@
 <body>
 @extends('layouts.app')
 @section('content')
-<form action="" method="post" enctype="multipart/form-data">
-@csrf
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{ route('updateImage', ['id' => auth()->user()]) }}" method="post" enctype="multipart/form-data">
+@csrf 
+<input type="hidden" name="id" value="{{ auth()->user()->id }}">
     <div class="form-group">
-        <label>本の画像</label>
+        <label>プロフィール画像</label>
         <input type="file" name="image" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">登録する</button>
@@ -19,7 +29,7 @@
 <br>
 
 <a href="{{ route('mypage', ['id' => auth()->user()]) }}">マイページへ</a>
-<a href="">マイページを編集</a>
+<a href="{{ route('editProfile', ['id' => auth()->user()]) }}">マイページを編集</a>
 <a href="">日記を書く</a>
 <a href="">ログをつける</a>
 

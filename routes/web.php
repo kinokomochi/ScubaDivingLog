@@ -27,4 +27,10 @@ Route::middleware('auth')->group(function(){
     Route::view('mypage', 'mypage.mypage')->name('mypage');
 });
 
-Route::get('/mypage/edit/{id}', 'MypageControll@editImage')->name('editImage');
+Route::get('mypage/editImage/{id}', 'MypageController@editImage')->name('editImage');
+
+Route::post('mypage/editImage/{id}', 'MypageController@updateImage')->name('updateImage');
+
+Route::get('mypage/editProfile/{id}', 'MypageController@editProfile')->name('editProfile');
+
+Route::post('mypage/editProfile/{id}', 'MypageController@updateProfile')->name('updateProfile');
