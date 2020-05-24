@@ -18,11 +18,6 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('updateProfile', ['id' => auth()->user()]) }}">
-                    <input type="hidden" name="image" value="{{ $user->image }}">
-                    <input type="hidden" name="email" value="{{ $user->email }}">
-                    <input type="hidden" name="password" value="{{ $user->password }}">
-
-
                         @csrf
 
                         <div class="form-group row">
