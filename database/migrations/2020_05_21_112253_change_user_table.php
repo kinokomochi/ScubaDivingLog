@@ -15,8 +15,8 @@ class ChangeUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('diary_id')->nullable()->change();
-            $table->integer('log_id')->nullable()->change();
+            $table->integer('diary_id')->nullable();
+            $table->integer('log_id')->nullable();
         });
     }
 
