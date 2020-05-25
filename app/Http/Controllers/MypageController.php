@@ -34,7 +34,7 @@ class MypageController extends Controller
         $user = User::where('id', Auth::user()->id)->find($request->id);
         $user->image = $request->image->store('public/images');
         $image = $user->image;
-        $read_image = str_replace('public/', 'storage/',$image);
+        $read_image = str_replace('public/', '/storage/',$image);
         $user->save();
         //マイページへ
         return view('mypage.mypage', ['id' => $id, 'image' => $image, 'read_image' => $read_image]);
