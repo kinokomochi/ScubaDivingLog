@@ -17,9 +17,8 @@
         </ul>
     </div>
 @endif
-<form action="{{ route('updateImage', ['id' => auth()->user()]) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('updateImage') }}" method="post" enctype="multipart/form-data">
 @csrf 
-<input type="hidden" name="id" value="{{ auth()->user()->id }}">
     <div class="form-group">
         <label>プロフィール画像</label>
         <input type="file" name="image" class="form-control">
@@ -28,8 +27,8 @@
 </form>
 <br>
 
-<a href="{{ route('mypage', ['id' => auth()->user()]) }}">マイページへ</a>
-<a href="{{ route('editProfile', ['id' => auth()->user()]) }}">マイページを編集</a>
+<a href="{{ route('mypage') }}">マイページへ</a>
+<a href="{{ route('editProfile') }}">マイページを編集</a>
 <a href="">日記を書く</a>
 <a href="">ログをつける</a>
 

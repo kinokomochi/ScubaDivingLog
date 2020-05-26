@@ -16,10 +16,15 @@ class MypageController extends Controller
         $this->middleware('auth');
     }
     // }
-    public function editImage($id)
+
+    public function index()
+    {
+        return view('mypage.mypage');
+    }
+    public function editImage()
     {
         //編集画面を表示する
-        return view('mypage.editImage', ['id' => $id] );
+        return view('mypage.editImage');
     }
     
     public function updateImage(Request $request)
@@ -30,21 +35,16 @@ class MypageController extends Controller
         ]);
         //エラーがあれば選択画面にリダイレクト
         //エラーがなければ画像をDBに保存
-        $id = $request->id;
-        $user = User::where('id', Auth::user()->id)->find($request->id);
-        $user->image = $request->image->store('public/images');
-        $image = $user->image;
-        $read_image = str_replace('public/', '/storage/',$image);
+        $user = Auth::user();
+        $user->image = basename($request->image->store('public/images'));
         $user->save();
         //マイページへ
-        return view('mypage.mypage', ['id' => $id, 'image' => $image, 'read_image' => $read_image]);
+        return redirect('mypage');
     }
 
-    public function editProfile($id, User $user)
+    public function editProfile()
     {
-        $user = User::find($id);
-
-        return view('mypage.editProfile', ['id' => $id, 'user' => $user]);
+        return view('mypage.editProfile');
     }
 
     public function updateProfile(Request $request)
@@ -60,22 +60,14 @@ class MypageController extends Controller
         ]);
         //エラーあればeditProfile/idにリダイレクト
         //なければDBに登録
-        $id = $request->id;
-        $user = User::where('id', Auth::user()->id)->find($request->id);
-        $user->name = $request->name;
-        $user->gender = $request->gender;
-        $user->prefecture = $request->prefecture;
-        $user->licence = $request->licence;
-        $user->experience = $request->experience;
-        $user->introduction = $request->introduction;
-        $user->save();
         Auth::user()->name = $request->name;
         Auth::user()->gender = $request->gender;
         Auth::user()->prefecture = $request->prefecture;
         Auth::user()->licence = $request->licence;
         Auth::user()->experience = $request->experience;
         Auth::user()->introduction = $request->introduction;
+        Auth::user()->save();
         //mypageに移動
-        return view('mypage.mypage', ['id' => $id, 'user' => $user]);
+        return redirect('mypage');
     }
 }

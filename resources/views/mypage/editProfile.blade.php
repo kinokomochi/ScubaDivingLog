@@ -17,14 +17,14 @@
                 <div class="card-header">ユーザー情報編集</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateProfile', ['id' => auth()->user()]) }}">
+                    <form method="POST" action="{{ route('updateProfile') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ Auth::user()->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>
 
                             <div class="col-md-6">
-                                <select id="gender"  class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ $user->gender }}" required autocomplete="gender" autofocus>
+                                <select id="gender"  class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ Auth::user()->gender }}" required autocomplete="gender" autofocus>
                                     <option value="">選択して下さい</option>
                                     <option value="male">男</option>
                                     <option value="female">女</option>
@@ -55,7 +55,7 @@
                             <label for="licence" class="col-md-4 col-form-label text-md-right">ライセンス</label>
 
                         <div class="col-md-6">
-                            <select id="Licence" type="text" class="form-control @error('licence') is-invalid @enderror" name="licence" value="{{ $user->licence }}" required autocomplete="licence" autofocus>
+                            <select id="Licence" type="text" class="form-control @error('licence') is-invalid @enderror" name="licence" value="{{ Auth::user()->licence }}" required autocomplete="licence" autofocus>
                                 <option value="">選択して下さい</option>
                                 <option value="nolicence">ライセンス無し</option>
                                 <option value="OWD">オープンウォーターダイバー（OWD）</option>
@@ -75,7 +75,7 @@
                             <label for="experience" class="col-md-4 col-form-label text-md-right">経験本数</label>
 
                             <div class="col-md-6">
-                                <input id="experience" type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ $user->experience }}" required autocomplete="experience" autofocus>
+                                <input id="experience" type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ Auth::user()->experience }}" required autocomplete="experience" autofocus>
 
                                 @error('experience')
                                     <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                             <label for="prefecture" class="col-md-4 col-form-label text-md-right">居住地</label>
 
                             <div class="col-md-6">
-                                <select id="prefecture" type="text" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" value="{{ $user->prefecture }}" required autocomplete="prefecture" autofocus>
+                                <select id="prefecture" type="text" class="form-control @error('prefecture') is-invalid @enderror" name="prefecture" value="{{ Auth::user()->prefecture }}" required autocomplete="prefecture" autofocus>
                                     <option value="" selected>都道府県</option>
                                     <option value="北海道">北海道</option>
                                     <option value="青森県">青森県</option>
@@ -149,7 +149,7 @@
                             <label for="introduction" class="col-md-4 col-form-label text-md-right">自己紹介文</label>
 
                             <div class="col-md-6">
-                                <textarea id="introduction" type="text" class="form-control @error('introduction') is-invalid @enderror" name="introduction"  required autocomplete="introduction" autofocus row="4">{{ $user->introduction }}</textarea>
+                                <textarea id="introduction" type="text" class="form-control @error('introduction') is-invalid @enderror" name="introduction"  required autocomplete="introduction" autofocus row="4">{{ Auth::user()->introduction }}</textarea>
 
                                 @error('introduction')
                                     <span class="invalid-feedback" role="alert">
