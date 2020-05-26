@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'gender' => ['required'],
             'prefecture' => ['required'],
             'licence' => ['required'],
-            'experience' => ['required', 'integer', 'min:1', 'max:1000'],
+            'experience' => ['required', 'integer', 'min:0', 'max:1000'],
             'introduction' => ['required'],
         ]);
     }

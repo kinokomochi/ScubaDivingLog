@@ -35,4 +35,12 @@ Route::middleware('auth')->group(function(){
 
     Route::post('mypage/editProfile', 'MypageController@updateProfile')->name('updateProfile');
 
+    Route::get('diary/createDiary', 'DiaryController@createDiary')->name('createDiary');
+
+    Route::post('diary/createDiary', 'DiaryController@createDiaryImg')->name('createDiaryImg');
+
+    Route::post('diary/createDiaryImg', 'DiaryController@storeDiary')->name('storeDiary');
+
 });
+
+Route::get('diary/showDiary/{id}', 'DiaryController@showDiary')->name('showDiary');

@@ -18,7 +18,8 @@
         自己紹介→{{Auth::user()->introduction}}
 <a href="{{ route('editImage') }}">プロフィール画像を編集</a>
 <a href="{{ route('editProfile') }}">マイページを編集</a>
-<a href="">日記を書く</a>
+<a href="{{ route('createDiary') }}">日記を書く</a>
+<a href="">日記一覧へ</a>
 <a href="">ログをつける</a>
 
 @endsection

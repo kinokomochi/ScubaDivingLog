@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 @extends('layouts.app')
 @section('content')
 @if ($errors->any())
@@ -33,5 +25,3 @@
 <a href="">ログをつける</a>
 
 @endsection
-</body>
-</html>
