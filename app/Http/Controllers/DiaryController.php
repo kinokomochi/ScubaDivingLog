@@ -74,7 +74,6 @@ class DiaryController extends Controller
     {
         $diary = Diary::find($id);
         $user = DB::table('users')->join('diaries', 'user_id', '=', 'users.id')->select('name')->where('users.id', '=', $diary['user_id'])->first();
-        // dd($user->name);
-        return view('diary.showDiary',['diary' => $diary, 'user' => $user->name]);
+        return view('diary.showDiary',['diary' => $diary, 'user' => $user]);
     }
 }
