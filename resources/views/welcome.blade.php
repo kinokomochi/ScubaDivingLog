@@ -73,6 +73,7 @@
                     ScubaDivingLog
             </div>
             <div class="m-b-md">
+            <p><a href="{{ route('stream') }}">海の中を覗いてみる</a></p>
 
                 @if (Route::has('login'))
 
