@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use App\Diary;
+
 use Auth;
 
 class MypageController extends Controller
@@ -19,7 +21,9 @@ class MypageController extends Controller
 
     public function index()
     {
-        return view('mypage.mypage');
+        $user = Auth::user();
+        $diary = Diary::where('user_id', $user['id'])->simplepaginate(6);
+        return view('mypage.mypage', ['diary' => $diary]);
     }
     public function editImage()
     {

@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 @extends('layouts.app')
 @section('content')
 <h2>マイページ</h2>
@@ -19,8 +11,14 @@
 <a href="{{ route('editImage') }}">プロフィール画像を編集</a>
 <a href="{{ route('editProfile') }}">マイページを編集</a>
 <a href="{{ route('createDiary') }}">日記を書く</a>
-<a href="">日記一覧へ</a>
 <a href="">ログをつける</a>
+<br>
+<h3>日記一覧</h3>
+
+@foreach($diary as $val)
+<a href="{{ route('showDiary', ['id' => $val['id']]) }}"><p>{{ $val['day'] . '-' . $val['title'] }}</p></a>
+@endforeach
+{{ $diary->links() }}
 
 @endsection
 </body>

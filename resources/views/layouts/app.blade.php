@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="http://maps.google.com/maps/api/js?key={AIzaSyCtQ-vIHO-nS180XF2DgqsStFH6M_c6qGY}&language=ja"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -64,6 +64,8 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ route('createDiary') }}">日記を書く</a>
+
                                 </div>
                             </li>
                         @endguest
