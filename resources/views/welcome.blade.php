@@ -73,19 +73,22 @@
                     ScubaDivingLog
             </div>
             <div class="m-b-md">
+            <p>ダイビングSNS”ScubaDivingLog”へようこそ！</p>
+            <p>このSNSはスキューバダイビングを楽しむ全ての人たちに使ってほしいソーシャルサイトです。ダイビングの記録と思い出を共有し、ダイビングライフをより充実させましょう！</p>
+            <p>まだダイビングをした事がない人はまずはこの動画で海の中の世界を覗いて見てください。きっと海の世界に興味が湧くはずです！</p>
             <p><a href="{{ route('stream') }}">海の中を覗いてみる</a></p>
 
                 @if (Route::has('login'))
 
                     @auth
                     
-                        <a href="{{ url('/home') }}">Home</a>
+                        <p><a href="{{ url('/home') }}">トップページ</a></p>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <p><a href="{{ route('register') }}">サインアップ</a></p>
                         @endif
+                        <p><a href="{{ route('login') }}">ログイン</a></p>
+
                     @endauth
                 @endif
             </div>
