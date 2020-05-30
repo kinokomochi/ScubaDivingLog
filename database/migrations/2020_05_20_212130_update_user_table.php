@@ -15,12 +15,12 @@ class UpdateUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('image')->nullable();
-            $table->string('gender');
-            $table->string('licence');
-            $table->string('experience');
-            $table->string('prefecture')->nullable();
-            $table->text('introduction')->nullable();
+            $table->string('image')->nullable()->change();
+            $table->string('gender')->change();
+            $table->string('licence')->change();
+            $table->string('experience')->change();
+            $table->string('prefecture')->nullable()->change();
+            $table->text('introduction')->nullable()->change();
         });
     }
 
@@ -33,6 +33,14 @@ class UpdateUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('image')->nullable();
+            $table->dropColumn('gender');
+            $table->dropColumn('licence');
+            $table->dropColumn('experience');
+            $table->dropColumn('prefecture')->nullable();
+            $table->dropColumn('introduction')->nullable();
+
+
         });
     }
 }

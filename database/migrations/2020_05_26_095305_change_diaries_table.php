@@ -33,5 +33,9 @@ class ChangeDiariesTable extends Migration
     public function down()
     {
         //
+        Schema::table('diaries', function(Blueprint $table){
+            $table->dropColumn('day');
+            $table->dropColumn('movie');
+        });
     }
 }

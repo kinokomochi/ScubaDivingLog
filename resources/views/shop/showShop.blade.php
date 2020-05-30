@@ -4,7 +4,7 @@
 <h2>{{ $shop['shopname'] }}</h2>
 <p>{{ $shop['address'] }}</p>
 <iframe id="map" 
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtQ-vIHO-nS180XF2DgqsStFH6M_c6qGY;q={{ $shop['address'] }}" 
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtQ-vIHO-nS180XF2DgqsStFH6M_c6qGY&q={{ $shop['address'] }}" 
     width="100%" height="320" frameborder="0"></iframe>
 <p>{{ $shop['url'] }}</p>
 <p>{{ $shop['introduction'] }}</p>

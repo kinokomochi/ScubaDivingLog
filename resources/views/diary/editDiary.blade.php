@@ -27,7 +27,7 @@
     <button type="submit" class="btn btn-primary">更新する</button>
 </form>
 <br>
-<a href="{{ route('deleteDiary', ['id' => $diary->id]) }}">マイページへ</a>
+<a href="{{ route('deleteDiary', ['id' => $diary->id]) }}">日記を削除する</a>
 
 <br>
 

@@ -15,8 +15,8 @@ class ChangeUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('diary_id')->nullable();
-            $table->integer('log_id')->nullable();
+            $table->integer('diary_id')->nullable()->change();
+            $table->integer('log_id')->nullable()->change();
         });
     }
 
@@ -29,6 +29,9 @@ class ChangeUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('diary_id')->nullable();
+            $table->dropColumn('log_id')->nullable();
+
         });
     }
 }
