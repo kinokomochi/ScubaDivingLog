@@ -9,15 +9,15 @@
     </div>
     <div class="row">
         <div class="content col-md-6 col-lg-4"> 
-            <p><img src="{{ asset('storage/images/' . Auth::user()->image) }}" width="300" height="300"></p>
+            <p><img src="{{ asset('storage/images/' . $user->image) }}" width="300" height="300"></p>
         </div>
         <div class="content col-md-6 col-lg-4">
             <h3>プロフィール</h3>
-            <p>性別→{{Auth::user()->gender}}</p>
-            <p> 居住地→{{Auth::user()->prefecture}}</p>
-            <p>ライセンス→{{Auth::user()->licence}}</p>
-            <p>経験本数→{{Auth::user()->experience}}</p>
-            <p>自己紹介→{{Auth::user()->introduction}}</p>
+            <p>性別→{{ $user->gender }}</p>
+            <p> 居住地→{{ $user->prefecture }}</p>
+            <p>ライセンス→{{ $user->licence}}</p>
+            <p>経験本数→{{ $user->experience}}</p>
+            <p>自己紹介→{{ $user->introduction}}</p>
         </div>
         <div class="content col-md-4">
             <h3>日記一覧</h3>

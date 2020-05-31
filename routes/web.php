@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@mypage')->name('home');
+Route::get('/home', 'HomeController@mindex')->name('home');
 
-Route::get('mypage/{id}', 'MypageController@mypage')->name('mypage');
+Route::get('mypage/indexUser', 'MypageController@indexUser')->name('indexUser');
+
 
 
 Route::middleware('auth')->group(function(){
@@ -64,3 +65,4 @@ Route::get('shop/showShop/{id}', 'ShopController@showShop')->name('showShop');
 
 Route::get('shop/searchShop', 'ShopController@searchShop')->name('searchShop');
 
+Route::get('mypage/{id}', 'MypageController@mypage')->name('mypage');

@@ -16,7 +16,14 @@ use Auth;
 
 class DiaryController extends Controller
 {
-    //
+    public function indexDiary()
+    {
+        //日記の全てのデータ取得
+        $diary = DB::table('diaries')->paginate(10);
+        //viewに渡す
+        return view('diary.indexDiary', ['diary' => $diary]);
+    }
+
     public function createDiary()
     {
         return view('diary.createDiary');

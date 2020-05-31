@@ -42,14 +42,12 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                                <a class="dropdown-item" href="{{ route('login') }}">ログイン</a>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                    <a class="dropdown-item" href="{{ route('register') }}">サインアップ</a>
                             @endif
+                            <a class="dropdown-item" href="{{ route('indexDiary') }}">日記を見る</a>
+                            <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -57,7 +55,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('createDiary') }}">日記を書く</a>
+                                    <a class="dropdown-item" href="{{ route('createDiary') }}">日記を書く</a>
                                     <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::user()->id]) }}">マイページに戻る</a>
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">マイページを編集</a>
                                     <a class="dropdown-item" href="{{ route('editImage') }}">プロフィール画像を編集</a>

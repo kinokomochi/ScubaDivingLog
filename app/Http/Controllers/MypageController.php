@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\User;
 
 use App\Diary;
@@ -14,7 +16,15 @@ class MypageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['mypage']);
+        $this->middleware('auth')->except(['mypage', 'indexUser']);
+    }
+
+    public function indexUser()
+    {
+        //ユーザーデータ全取得
+        $user = DB::table('users')->paginate(10);
+        //viewに渡す
+        return view('mypage.indexUser', ['user' => $user]);
     }
 
     public function mypage($id)
