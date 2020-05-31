@@ -23,10 +23,13 @@
         </div>
         <div class="content col-md-4">
             <h3>日記一覧</h3>
-            @foreach($diary as $val)
-            <a href="{{ route('showDiary', ['id' => $val['id']]) }}"><p>{{ $val['day'] . '-' . $val['title'] }}</p></a>
-            @endforeach
-            {{ $diary->links() }}
+            <p>
+                @foreach($diary as $val)
+                <a href="{{ route('showDiary', ['id' => $val['id']]) }}"><p>{{ $val['day'] . '-' . $val['title'] }}</p></a>
+                @endforeach
+            </p>
+
+                {{ $diary->links() }}
             <a href="{{ route('createDiary') }}">日記を書く</a>
 
         </div>
