@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!
-                    <a href="{{ route('mypage') }}">マイページへ</a>
+                    <a href="{{ route('mypage',['id' => Auth::user()->id]) }}">マイページへ</a>
                 </div>
             </div>
         </div>
