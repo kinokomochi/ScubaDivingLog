@@ -46,8 +46,6 @@
                             @if (Route::has('register'))
                                     <a class="dropdown-item" href="{{ route('register') }}">サインアップ</a>
                             @endif
-                            <a class="dropdown-item" href="{{ route('indexDiary') }}">日記を見る</a>
-                            <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -68,12 +66,13 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-
-
-
+                        @endguest
+                                    <a class="dropdown-item" href="{{ route('indexDiary') }}">日記を見る</a>
+                                    <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>
                                 </div>
                             </li>
-                        @endguest
+                        
+
                     </ul>
                 </div>
             </div>
