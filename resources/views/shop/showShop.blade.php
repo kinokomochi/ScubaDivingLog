@@ -13,8 +13,6 @@
             <p>{{ $shop['url'] }}</p>
             <p>{{ $shop['introduction'] }}</p>
             <img src="{{ asset('storage/images/' . $shop['image']) }}" width="50" height="50">
-            <a href="{{ route('mypage') }}">マイページに戻る</a>
-            <a href="{{ route('createDiary') }}">日記を書く</a>
         </div>
 
     </div>

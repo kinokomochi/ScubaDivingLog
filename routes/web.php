@@ -19,13 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@mypage')->name('home');
 
-// Route::get('/mypage/{id}', 'MypageController@getUser')->name('mypage');
+Route::get('mypage/{id}', 'MypageController@mypage')->name('mypage');
+
 
 Route::middleware('auth')->group(function(){
-
-    Route::get('mypage', 'MypageController@index')->name('mypage');
 
     Route::get('mypage/editImage', 'MypageController@editImage')->name('editImage');
 
@@ -57,8 +56,11 @@ Route::middleware('auth')->group(function(){
 
 Route::get('/stream', 'streamController@stream')->name('stream');
 
+Route::get('diary/indexDiary', 'DiaryController@indexDiary')->name('indexDiary');
+
 Route::get('diary/showDiary/{id}', 'DiaryController@showDiary')->name('showDiary');
 
 Route::get('shop/showShop/{id}', 'ShopController@showShop')->name('showShop');
 
 Route::get('shop/searchShop', 'ShopController@searchShop')->name('searchShop');
+

@@ -36,8 +36,4 @@
 </form>
 <br>
 
-<a href="{{ route('mypage') }}">マイページへ</a>
-<a href="{{ route('editProfile') }}">マイページを編集</a>
-<a href="">ログをつける</a>
-
 @endsection

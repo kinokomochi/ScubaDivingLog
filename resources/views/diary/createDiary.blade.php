@@ -24,12 +24,9 @@
         <textarea type="text" name="content" class="form-control" row="8">{{ old('content') }}</textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">写真・動画登録へ進む</button>
+    <button type="submit" class="btn btn-primary">写真登録へ進む</button>
 </form>
 <br>
 
-<a href="{{ route('mypage') }}">マイページへ</a>
-<a href="{{ route('editProfile') }}">マイページを編集</a>
-<a href="">ログをつける</a>
 
 @endsection

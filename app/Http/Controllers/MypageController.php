@@ -12,18 +12,16 @@ use Auth;
 
 class MypageController extends Controller
 {
-    //
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['mypage']);
     }
-    // }
 
-    public function index()
+    public function mypage($id)
     {
-        $user = Auth::user();
-        $diary = Diary::where('user_id', $user['id'])->simplepaginate(6);
-        return view('mypage.mypage', ['diary' => $diary]);
+        $user = User::find($id);
+        $diary = Diary::where('user_id', $user->id)->simplepaginate(6);
+        return view('mypage.mypage', ['diary' => $diary, 'user' => $user]);
     }
     public function editImage()
     {

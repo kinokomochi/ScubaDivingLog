@@ -17,10 +17,5 @@
 <button type="submit" class="btn btn-danger">削除する</button>
 </form>
 <br>
-<a href="{{ route('mypage') }}">マイページに戻る</a>
-<a href="{{ route('createDiary') }}">日記を書く</a>
-<a href="">写真を編集</a>
-<a href="">日記を削除</a>
-<a href="">ログをつける</a>
 
 @endsection
