@@ -19,7 +19,11 @@ class DiaryController extends Controller
     public function indexDiary()
     {
         //日記の全てのデータ取得
-        $diary = DB::table('diaries')->paginate(10);
+        $diary = DB::table('diaries')
+        ->join('users', 'diaries.user_id', '=', 'users.id')
+        ->select()
+        ->where('deleted_at', '=', null)
+        ->paginate(10);
         //viewに渡す
         return view('diary.indexDiary', ['diary' => $diary]);
     }
