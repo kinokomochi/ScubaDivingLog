@@ -30,7 +30,6 @@
                 {{ $diary->links() }}
         </div>
     </div>
-
 @endsection
 </body>
 </html>

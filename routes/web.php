@@ -55,6 +55,15 @@ Route::middleware('auth')->group(function(){
 
     Route::post('user/deleteUser', 'UserController@destroyUser')->name('destroyUser');
 
+    Route::get('list/indexList', 'ToDoListController@indexList')->name('indexList');
+
+    Route::get('list/postList', 'ToDoListController@createList')->name('createList');
+
+    Route::post('list/postList', 'ToDoListController@postList')->name('postList');
+
+    Route::post('list/indexList', 'ToDoListController@deleteList')->name('deleteList');
+
+
 });
 
 Route::get('/stream', 'streamController@stream')->name('stream');

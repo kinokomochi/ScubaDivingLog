@@ -54,6 +54,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('createDiary') }}">日記を書く</a>
+                                    <a class="dropdown-item" href="{{ route('indexList', ['user_id' => Auth::user()->id]) }}">潜る前リストを見る</a>
                                     <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::user()->id]) }}">マイページに戻る</a>
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">マイページを編集</a>
                                     <a class="dropdown-item" href="{{ route('editImage') }}">プロフィール画像を編集</a>
