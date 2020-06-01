@@ -81,6 +81,9 @@ class DiaryController extends Controller
     public function showDiary($id)
     {
         $diary = Diary::find($id);
+        if($diary == null) {
+            abort('403');
+        }
         $user = DB::table('users')->join('diaries', 'user_id', '=', 'users.id')->select()->where('users.id', '=', $diary['user_id'])->first();
         return view('diary.showDiary',['diary' => $diary, 'user' => $user]);
     }

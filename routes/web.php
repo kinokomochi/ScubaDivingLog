@@ -21,9 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('mypage/indexUser', 'MypageController@indexUser')->name('indexUser');
-
-
+Route::get('user/indexUser', 'UserController@indexUser')->name('indexUser');
 
 Route::middleware('auth')->group(function(){
 
@@ -53,9 +51,9 @@ Route::middleware('auth')->group(function(){
 
     Route::post('diary/editDiaryImg/{id}', 'DiaryController@updateDiaryImg')->name('updateDiaryImg');
 
-    Route::get('mypage/deleteUser', 'UserController@deleteUser')->name('deleteUser');
+    Route::get('user/deleteUser', 'UserController@deleteUser')->name('deleteUser');
 
-    Route::post('mypage/deleteUser', 'UserController@destroyUser')->name('destroyUser');
+    Route::post('user/deleteUser', 'UserController@destroyUser')->name('destroyUser');
 
 });
 

@@ -19,17 +19,12 @@ class MypageController extends Controller
         $this->middleware('auth')->except(['mypage', 'indexUser']);
     }
 
-    public function indexUser()
-    {
-        //ユーザーデータ全取得
-        $user = DB::table('users')->paginate(10);
-        //viewに渡す
-        return view('mypage.indexUser', ['user' => $user]);
-    }
-
     public function mypage($id)
     {
         $user = User::find($id);
+        if($user == null) {
+            abort('403');
+        }
         $diary = Diary::where('user_id', $user->id)->simplepaginate(6);
         return view('mypage.mypage', ['diary' => $diary, 'user' => $user]);
     }
