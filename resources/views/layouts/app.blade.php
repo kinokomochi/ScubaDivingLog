@@ -62,10 +62,11 @@
                                                      document.getElementById('logout-form').submit();">
                                         ログアウト
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ route('deleteUser') }}">アカウントを削除</a>
+
                         @endguest
                                     <a class="dropdown-item" href="{{ route('indexDiary') }}">日記を見る</a>
                                     <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>

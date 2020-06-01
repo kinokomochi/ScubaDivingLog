@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function(){
 
     Route::post('diary/editDiaryImg/{id}', 'DiaryController@updateDiaryImg')->name('updateDiaryImg');
 
+    Route::get('mypage/deleteUser', 'UserController@deleteUser')->name('deleteUser');
+
+    Route::post('mypage/deleteUser', 'UserController@destroyUser')->name('destroyUser');
+
 });
 
 Route::get('/stream', 'streamController@stream')->name('stream');
