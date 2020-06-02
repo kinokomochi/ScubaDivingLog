@@ -45,9 +45,12 @@ class MypageController extends Controller
         $user = Auth::user();
         $user->image = basename($request->image->store('public/images'));
         $user->save();
+        $id = $user['id'];
         //マイページへ
-        return redirect('mypage');
-    }
+        return redirect(route('mypage',[
+             'id' => $id
+        ]));
+        }
 
     public function editProfile()
     {
@@ -74,7 +77,10 @@ class MypageController extends Controller
         Auth::user()->experience = $request->experience;
         Auth::user()->introduction = $request->introduction;
         Auth::user()->save();
+        $id = Auth::user()->id;
         //mypageに移動
-        return redirect('mypage');
-    }
+        return redirect(route('mypage',[
+            'id' => $id
+       ]));
+   }
 }

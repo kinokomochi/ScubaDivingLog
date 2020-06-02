@@ -20,6 +20,13 @@
             <p><img src="{{ asset('storage/images/' . $diary['photo3']) }}" width="300" height="300"></p>
         </div>
     </div>
-
+    @if($diary->id == Auth::user()->id)
+    <div class="row">
+        <tr>
+        <a href="{{ route('editDiary', ['id' => $diary->id]) }}">日記を編集/ </a>
+        <a href="{{ route('editDiaryImg', ['id' => $diary->id]) }}">写真を編集</a>
+        </tr>
+    </div>
+    @endif
 </div>
 @endsection

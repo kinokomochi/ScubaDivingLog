@@ -127,8 +127,11 @@ class DiaryController extends Controller
     public function destroyDiary($id, Request $request)
     {
         Diary::find($id)->delete();
-        return redirect('mypage');
-    }
+        $id = Auth::user()->id;
+        return redirect(route('mypage',[
+            'id' => $id
+       ]));
+   }
 
     public function editDiaryImg($id)
     {
