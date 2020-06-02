@@ -1,79 +1,103 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+<h1>スキューバダイビングSNSについて</h1>
+---
+スキューバダイビングを趣味にしている人が集うSNSアプリです。
+潜りに行ったダイビングポイントの感想や見つけた生き物などをシェアできます。
+またダイビングショップ情報もこのアプリ内で検索できます。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<h2>概要</h2>
+---
+<h4>開発環境</h4>
+OS mac10.15.4
+php 7.4.5
+Laravel 7.12.0
 
-## About Laravel
+<h4>機能</h4>
+・サインアップ/ログイン機能　ユーザー情報の編集/削除　
+・日記、潜る前リストの投稿/編集/削除
+・ユーザー一覧、日記一覧の閲覧
+・ダイビングショップ検索、情報閲覧
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h4>サンプルユーザー</h4>
+・メールアドレス：sample@email.com
+・パスワード：password
+(メールアドレス、パスワードは編集/削除しないでください。)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h4>DB定義</h4>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+users
+```
+CREATE TABLE `users` (
+ `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `email_verified_at` timestamp NULL DEFAULT NULL,
+ `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `created_at` timestamp NULL DEFAULT NULL,
+ `updated_at` timestamp NULL DEFAULT NULL,
+ `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `licence` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `experience` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `prefecture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `introduction` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `diary_id` int(11) DEFAULT NULL,
+```
 
-## Learning Laravel
+diaries
+```
+CREATE TABLE `diaries` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `day` date NOT NULL,
+ `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `photo1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `photo2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `photo3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `movie` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `user_id` int(11) NOT NULL,
+ `created_at` timestamp NULL DEFAULT NULL,
+ `updated_at` timestamp NULL DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+to_do_lists
+```
+CREATE TABLE `to_do_lists` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `list` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `created_at` timestamp NULL DEFAULT NULL,
+ `updated_at` timestamp NULL DEFAULT NULL,
+ `user_id` int(11) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+shops
+```
+CREATE TABLE `shops` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `shopname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `introduction` text COLLATE utf8mb4_unicode_ci NOT NULL,
+ `created_at` timestamp NULL DEFAULT NULL,
+ `updated_at` timestamp NULL DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+```
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<今後の展望>
+1) ダイビングショップのオーナーのログイン機能、管理画面の実装
+2) ダイビングのログ付け機能（潜水時間、気温などのログ）の実装
+3) ショップのダイビングツアー予約機能の実装
+4) 3に伴い、ユーザーの予約に必要な情報管理機能(名前、住所、身長、体重など)の実装
+5) コメント、いいね機能の実装
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+特に、３の予約機能については特に実装を実現したい項目です。
+ダイビングツアーの申し込み時は、名前や住所など毎回同じような項目をショップに伝えなければなりません。
+また、複数人で申し込む場合は誰か代表者が取りまとめてショップに情報を伝えます。その際、体重などデリケートな内容も含まれます。
+予約時に、そのような手続きの簡略化とプライバシーの保護が可能になるような方法で実装を目指しています。
