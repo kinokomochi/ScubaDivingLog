@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function(){
 
     Route::post('list/postList', 'ToDoListController@postList')->name('postList');
 
-    Route::post('list/indexList', 'ToDoListController@deleteList')->name('deleteList');
+    Route::post('list/indexList/{id}', 'ToDoListController@deleteList')->name('deleteList');
 
 
 });

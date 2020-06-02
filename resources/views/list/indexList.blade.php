@@ -18,7 +18,7 @@
         <td>{{ $val->list }}</td>
     </div>
     <div class="col-md-1 ">
-        <form action="{{ route('deleteList') }}" method="post">
+        <form action="{{ route('deleteList', ['id' => $val->id]) }}" method="post">
         @csrf 
         <td><button type="submit" class="btn btn-danger">削除</button></td>
         </form>

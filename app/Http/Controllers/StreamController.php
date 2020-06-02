@@ -9,7 +9,7 @@ class StreamController extends Controller
     //
     public function stream(Request $request)
     {
-        $path = storage_path('video/GOPR0898.MP4');
+        $path = storage_path('video/5637EDD4-E3CC-40AF-9A76-EE16F64AA5B1.mp4');
         $file_size = filesize($path);
         $fp = fopen($path, 'rb');
         $status_code = 200;
