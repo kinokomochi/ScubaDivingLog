@@ -16,7 +16,7 @@ class UserController extends Controller
     public function indexUser()
     {
         //ユーザーデータ全取得
-        $user = DB::table('users')->paginate(10);
+        $user = DB::table('users')->where('deleted_at', '=', null)->paginate(10);
         //viewに渡す
         return view('user.indexUser', ['user' => $user]);
     }

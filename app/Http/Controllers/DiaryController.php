@@ -21,9 +21,11 @@ class DiaryController extends Controller
         //日記の全てのデータ取得
         $diary = DB::table('diaries')
         ->join('users', 'diaries.user_id', '=', 'users.id')
-        ->select()
+        ->select('diaries.id','day', 'title', 'content', 'photo1', 'photo2', 'photo3',
+                'user_id', 'diaries.created_at', 'diaries.updated_at', 'users.name', 'users.image' )
         ->where('deleted_at', '=', null)
-        ->paginate(10);
+        ->orderBy('diaries.created_at', 'asc')
+        ->paginate(10); 
         //viewに渡す
         return view('diary.indexDiary', ['diary' => $diary]);
     }

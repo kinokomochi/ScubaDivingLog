@@ -40,6 +40,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    <a class="dropdown-item" href="{{ route('indexDiary') }}">日記一覧</a>
+                    <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>
+
                         <!-- Authentication Links -->
                         @guest
                                 <a class="dropdown-item" href="{{ route('login') }}">ログイン</a>
@@ -53,9 +56,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('createDiary') }}">日記を書く</a>
-                                    <a class="dropdown-item" href="{{ route('indexList', ['user_id' => Auth::user()->id]) }}">潜る前リストを見る</a>
-                                    <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::user()->id]) }}">マイページに戻る</a>
+                                    <a class="dropdown-item" href="{{ route('createDiary') }}">日記投稿</a>
+                                    <a class="dropdown-item" href="{{ route('indexList', ['user_id' => Auth::user()->id]) }}">潜る前リスト</a>
+                                    <a class="dropdown-item" href="{{ route('mypage', ['id' => Auth::user()->id]) }}">マイページ</a>
                                     <a class="dropdown-item" href="{{ route('editProfile') }}">マイページを編集</a>
                                     <a class="dropdown-item" href="{{ route('editImage') }}">プロフィール画像を編集</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -69,8 +72,6 @@
                                     <a class="dropdown-item" href="{{ route('deleteUser') }}">アカウントを削除</a>
 
                         @endguest
-                                    <a class="dropdown-item" href="{{ route('indexDiary') }}">日記を見る</a>
-                                    <a class="dropdown-item" href="{{ route('indexUser') }}">ユーザー一覧</a>
                                 </div>
                             </li>
                         
